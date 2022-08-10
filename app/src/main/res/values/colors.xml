@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF3d3d3d</color>
+    <color name="blackTrans">#411B1B1B</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="whiteTrans">#41FFFFFF</color>
+    <color name="colorGrey">#FFECEBEB</color>
+    <color name="colorGreen">#43A047</color>
+    <color name="colorGreenPass">#99D5BF</color>
+    <color name="colorGrey2">#AFAFAF</color>
+    <color name="colorPrimary">#ff28df99</color>
+    <color name="colorPrimaryDark">#ff99f3bd</color>
+    <color name="colorBlue">#2B95F1</color>
+    <color name="colorToolbar">#FF07377D</color>
+    <color name="background">#EAE8E8</color>
+    <color name="colorRed">#FFed1c24</color>
+    <color name="colorRedLight">#ED3940</color>
+    <color name="colorRedTrans">#56ed1c24</color>
+    <color name="colorRedPass">#FF6961</color>
+    <color name="colorBlack2">#FF3d3d3d</color>
+    <color name="colorprimaryTrans">#5628df99</color>
+    <color name="backgroundWhite">#FFf7f7f7</color>
+    <color name="abuabu">#55ABABAB</color>
+    <color name="transparan">#00FFFFFF</color>
+</resources>

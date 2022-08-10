@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.InformasiActivity">
+
+    <include layout="@layout/custom_layout_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tata Cara Pembayaran SPP"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Via Transfer"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="1. Pembayaran SPP dilakukan via transfer ke Rekening BNI No. Rekening : 621 321 0044 3257"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Setelah melakukan transaksi, siswa diharapkan mengisi form di menu pembayaran"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Upload bukti pembayaran"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. Cek status pembayaran pada menu pembayaran"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Via Tunai"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="1. Pembayaran SPP dilakukan via tunai di bagian tata usaha MTsN 8 Banyuwangi."
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Petugas TU akan mencatat data pembayaran siswa"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Siswa menyerahkan biaya SPP kepada petugas TU"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. Siswa akan diberikan kartu SPP pembayaran SPP"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5. Upload bukti slip pembayaran di aplikasi pembayaran SPP MTsN 8 Banyuwangi."
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/fontsize15"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+</LinearLayout>

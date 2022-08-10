@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dandyakbar.aplikasipembayaranspp">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AplikasiPembayaranSekolah"
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup"
+        tools:targetApi="m">
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.TambahSiswaNew"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admin.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admin.TambahAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.menu.MainSuperAdmin"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.BioSiswaActivity"
+            android:exported="true" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.ProfilKepalaSekolahActivity"
+            android:exported="true" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.RekapitulasiAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.DetailApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.ApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.RekapitulasiPembayaranActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.DetailTransaksi"
+            android:exported="true" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TambahPembayaranTransaksiInvoice"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.ListSemuaSiswaAdmin"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.akun.UpdateAkunActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.akun.ListAkunActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TambahPembayaranTransaksi"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.periode.TambahPeriode"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.periode.ListPeriodeActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.menu.MenuKepala"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TransaksiPembayaran"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.InformasiActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.ProfilActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.ListSiswa"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.kelas.UpdateKelas"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.kelas.TambahKelas"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.kelas.MainKelas"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.UpdateSiswa"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.TambahSiswa"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.menu.MainSiswa"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.menu.MainAdmin"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.MainActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

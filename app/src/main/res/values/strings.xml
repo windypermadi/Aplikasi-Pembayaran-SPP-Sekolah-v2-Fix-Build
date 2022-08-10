@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Aplikasi Pembayaran Sekolah</string>
+
+    <string-array name="jenis_kelamin">
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+        <item>Lainnya</item>
+    </string-array>
+
+    <string-array name="metode_pembayaran">
+        <item>Transfer Bank</item>
+        <item>Bank Virtual Account</item>
+        <item>OVO</item>
+        <item>Dana</item>
+        <item>Gopay</item>
+        <item>Shopeepay</item>
+    </string-array>
+
+</resources>

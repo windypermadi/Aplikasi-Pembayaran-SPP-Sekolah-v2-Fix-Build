@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:background="@color/transparan"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:cardMaxElevation="20dp"
+        app:contentPadding="@dimen/fontsize10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/back"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_model_toolbar_back">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_close" />
+            </RelativeLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:padding="8dp"
+                app:lottie_loop="true"
+                app:lottie_speed="1"
+                app:lottie_rawRes="@raw/anim_pengembangan"
+                app:lottie_autoPlay="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/fontsize18"
+                android:text="Pengembangan Sistem !!!"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/keterangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif"
+                android:gravity="start"
+                android:layout_gravity="start"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15"
+                android:textStyle="normal"
+                android:text="Fitur ini masih berada dalam pengembangan sistem. Tunggu update selanjutnya ya!"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/ok"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fontsize18"
+                android:text="Tutup"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fontsize10">10sp</dimen>
+    <dimen name="fontsize13">13sp</dimen>
+    <dimen name="fontsize15">15sp</dimen>
+    <dimen name="fontsize18">18sp</dimen>
+    <dimen name="fontsize20">20sp</dimen>
+    <dimen name="fontsize23">23sp</dimen>
+    <dimen name="fontsize25">25sp</dimen>
+    <dimen name="marginsize5">5dp</dimen>
+    <dimen name="marginsize10">10dp</dimen>
+    <dimen name="marginsize15">15dp</dimen>
+    <dimen name="marginsize20">20dp</dimen>
+    <dimen name="marginToolbar">45dp</dimen>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/ic_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="0dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_file"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@+id/ly2"
+            android:layout_toEndOf="@+id/ic_menu"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/fontsize15"
+                tools:ignore="RtlSymmetry"
+                tools:text="ID Mutasi" />
+
+            <TextView
+                android:id="@+id/text_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15"
+                tools:ignore="RtlSymmetry"
+                tools:text="Nama Admin" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/text_keterangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorGrey2"
+                android:textSize="@dimen/fontsize15"
+                tools:ignore="RtlSymmetry"
+                tools:text="(keterangan)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_stroke_primary"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fontsize15"
+                tools:ignore="RtlSymmetry"
+                tools:text="Masuk" />
+
+            <TextView
+                android:id="@+id/text_tanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center"
+                android:textColor="@color/colorGrey2"
+                android:textSize="@dimen/fontsize15"
+                tools:ignore="RtlSymmetry"
+                tools:text="22/11/2020" />
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

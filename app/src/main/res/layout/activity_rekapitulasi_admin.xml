@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.RekapitulasiAdminActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/custom_layout_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Untuk melihat laporan perperiode masukkan tahun ajaran dan bulan ajaran."
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/fontsize15" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Tahun Ajaran"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    tools:ignore="HardcodedText">
+
+                    <EditText
+                        android:id="@+id/et_tahun"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/black"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15"
+                        tools:ignore="Autofill,HardcodedText,LabelFor,UnusedAttribute" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Bulan"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    tools:ignore="HardcodedText">
+
+                    <EditText
+                        android:id="@+id/et_bulan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/black"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15"
+                        tools:ignore="Autofill,HardcodedText,LabelFor,UnusedAttribute" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text_simpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btn_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="Lihat Laporan"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fontsize18"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Jumlah Siswa"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15" />
+
+            <TextView
+                android:id="@+id/text_siswa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15"
+                android:textStyle="bold"
+                tools:text="75 Siswa" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Jumlah Transaksi"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15" />
+
+            <TextView
+                android:id="@+id/text_transaksi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15"
+                android:textStyle="bold"
+                tools:text="1.034 Transaksi" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Total Pembayaran SPP"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15" />
+
+            <TextView
+                android:id="@+id/text_total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                tools:text="Rp5.321.000.000" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/text_tutup"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_primary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="Tutup"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fontsize18"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+</RelativeLayout>

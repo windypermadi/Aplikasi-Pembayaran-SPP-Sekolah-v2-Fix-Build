@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:id="@+id/cv"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:id="@+id/rl_model"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:padding="10dp"
+            android:src="@drawable/icon_siswa"/>
+
+        <TextView
+            android:id="@+id/text_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/circle_button"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            tools:text="KA" />
+
+        <TextView
+            android:id="@+id/text_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            tools:text="Nama Siswa" />
+
+        <TextView
+            android:id="@+id/text_nis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_nama"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/colorRed"
+            tools:text="(NOnAktif)" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
