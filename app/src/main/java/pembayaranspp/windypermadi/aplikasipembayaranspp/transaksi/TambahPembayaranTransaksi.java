@@ -3,13 +3,16 @@ package pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -33,8 +36,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class TambahPembayaranTransaksi extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
@@ -43,18 +49,22 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     String nis, nama, kelas;
     String metode_pembayaran;
     private Spinner listItem;
-    private EditText et_nis, et_nama, et_kelas, et_tahun, et_bulan, et_total;
+    private EditText et_nis, et_nama, et_kelas, et_tahun, et_bulan, et_total, et_tanggal_bayar, et_nama_rekening;
     private TextView text_simpan;
 
     ArrayList<HashMap<String, String>> dataTahun = new ArrayList<>();
     ArrayList<HashMap<String, String>> dataBulan = new ArrayList<>();
 
     String idperiode, idtransaksi;
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_pembayaran_transaksi);
+
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
         listItem = findViewById(R.id.listItem);
         et_nis = findViewById(R.id.et_nis);
@@ -63,6 +73,8 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         et_tahun = findViewById(R.id.et_tahun);
         et_bulan = findViewById(R.id.et_bulan);
         et_total = findViewById(R.id.et_total);
+        et_tanggal_bayar = findViewById(R.id.et_tanggal_bayar);
+        et_nama_rekening = findViewById(R.id.et_nama_rekening);
         text_simpan = findViewById(R.id.text_simpan);
 
         et_cari = findViewById(R.id.et_cari);
@@ -88,6 +100,7 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         et_tahun.setOnClickListener(view -> {
             popup_provinsi();
         });
+        et_tanggal_bayar.setOnClickListener(v -> showDateDialog());
         et_bulan.setOnClickListener(view -> {
             popup_bulan();
         });
@@ -98,6 +111,16 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
                 CustomDialog.noInternet(TambahPembayaranTransaksi.this);
             }
         });
+    }
+
+    private void showDateDialog(){
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+            Calendar newDate = Calendar.getInstance();
+            newDate.set(year, month, dayOfMonth);
+            et_tanggal_bayar.setText(dateFormatter.format(newDate.getTime()));
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     private void LoadData() {
@@ -253,11 +276,20 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     }
 
     private void TambahData() {
+        Log.d("cek", MainSiswa.iduser);
+        Log.d("cek", idperiode);
+        Log.d("cek", metode_pembayaran);
+        Log.d("cek", et_nama_rekening.getText().toString().trim());
+        Log.d("cek", et_bulan.getText().toString().trim());
+        Log.d("cek", et_tanggal_bayar.getText().toString().trim());
+        Log.d("cek", et_total.getText().toString().trim());
         AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
                 .addQueryParameter("TAG", "tambah")
                 .addQueryParameter("idsiswa", MainSiswa.iduser)
                 .addQueryParameter("idperiode", idperiode)
                 .addQueryParameter("metode_pembayaran", metode_pembayaran)
+                .addQueryParameter("nama_rekening_pembayar", et_nama_rekening.getText().toString().trim())
+                .addQueryParameter("tanggal_bayar", et_tanggal_bayar.getText().toString().trim())
                 .addQueryParameter("bulan", et_bulan.getText().toString().trim())
                 .addQueryParameter("jumlah_pembayaran", et_total.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)

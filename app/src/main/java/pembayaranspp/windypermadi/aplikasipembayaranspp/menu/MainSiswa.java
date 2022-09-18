@@ -13,6 +13,7 @@ import com.dandyakbar.aplikasipembayaranspp.R;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.auth.BioSiswaActivity;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.auth.InformasiActivity;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.SessionManager;
+import pembayaranspp.windypermadi.aplikasipembayaranspp.tagihan.MenuTagihan;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TransaksiPembayaran;
 
 import java.io.File;
@@ -23,7 +24,7 @@ public class MainSiswa extends AppCompatActivity {
     private AppCompatImageView img_logout;
     public pembayaranspp.windypermadi.aplikasipembayaranspp.helper.SessionManager SessionManager;
     public static String iduser, username;
-    private CardView cv1, cv2, cv3;
+    private CardView cv1, cv2, cv3, cv4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class MainSiswa extends AppCompatActivity {
         cv1 = findViewById(R.id.cv1);
         cv2 = findViewById(R.id.cv2);
         cv3 = findViewById(R.id.cv3);
+        cv4 = findViewById(R.id.cv4);
 
         ActionButton();
         text_nama.setText("Halo " + username);
@@ -55,6 +57,7 @@ public class MainSiswa extends AppCompatActivity {
         });
         cv2.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, TransaksiPembayaran.class)));
         cv3.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, InformasiActivity.class)));
+        cv4.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, MenuTagihan.class)));
     }
 
     private void logoutUser() {
