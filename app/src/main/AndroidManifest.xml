@@ -24,7 +24,10 @@
         tools:ignore="AllowBackup"
         tools:targetApi="m">
         <activity
-            android:name=".MenuTagihan"
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi_pembayaran.ListTransaksiPembayaran"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.tagihan.MenuTagihan"
             android:exported="false" />
         <activity
             android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.TambahSiswaNew"

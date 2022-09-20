@@ -3,16 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/btn_danger.xml" value="0.136" />
+        <entry key="app/src/main/res/drawable/btn_green.xml" value="0.136" />
+        <entry key="app/src/main/res/drawable/btn_primary.xml" value="0.136" />
+        <entry key="app/src/main/res/drawable/circle_btn_green.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/circle_button.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/circle_button_red.xml" value="0.136" />
         <entry key="app/src/main/res/layout/activity_list_periode.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/activity_list_transaksi_pembayaran.xml" value="0.19177929913556133" />
         <entry key="app/src/main/res/layout/activity_main_admin.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_main_siswa.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_main_super_admin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_menu_tagihan.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_tambah_pembayaran_transaksi.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_tambah_pembayaran_transaksi_invoice.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/activity_tambah_siswa_new.xml" value="0.1675925925925926" />
         <entry key="app/src/main/res/layout/activity_transaksi_pembayaran.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/model_list_sudah_transaksi.xml" value="0.25461832682291663" />
         <entry key="app/src/main/res/layout/model_list_tagihan.xml" value="0.18795166015625003" />
         <entry key="app/src/main/res/layout/model_list_transaksi.xml" value="0.18854166666666666" />
       </map>

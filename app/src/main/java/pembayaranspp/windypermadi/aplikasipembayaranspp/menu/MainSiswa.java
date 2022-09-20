@@ -15,6 +15,7 @@ import pembayaranspp.windypermadi.aplikasipembayaranspp.auth.InformasiActivity;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.SessionManager;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.tagihan.MenuTagihan;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TransaksiPembayaran;
+import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi_pembayaran.ListTransaksiPembayaran;
 
 import java.io.File;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class MainSiswa extends AppCompatActivity {
     private AppCompatImageView img_logout;
     public pembayaranspp.windypermadi.aplikasipembayaranspp.helper.SessionManager SessionManager;
     public static String iduser, username;
-    private CardView cv1, cv2, cv3, cv4;
+    private CardView cv1, cv2, cv3, cv4, cv5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainSiswa extends AppCompatActivity {
         cv2 = findViewById(R.id.cv2);
         cv3 = findViewById(R.id.cv3);
         cv4 = findViewById(R.id.cv4);
+        cv5 = findViewById(R.id.cv5);
 
         ActionButton();
         text_nama.setText("Halo " + username);
@@ -58,6 +60,7 @@ public class MainSiswa extends AppCompatActivity {
         cv2.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, TransaksiPembayaran.class)));
         cv3.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, InformasiActivity.class)));
         cv4.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, MenuTagihan.class)));
+        cv5.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, ListTransaksiPembayaran.class)));
     }
 
     private void logoutUser() {

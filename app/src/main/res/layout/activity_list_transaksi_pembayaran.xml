@@ -40,6 +40,36 @@
                 tools:text="Menu Tagihan" />
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_green"
+                android:gravity="center"
+                android:text="Belum Dibayar"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Sudah Dibayar"
+                android:textColor="@color/black"
+                android:textSize="@dimen/fontsize15" />
+        </LinearLayout>
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
@@ -75,7 +105,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_data"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
             </RelativeLayout>

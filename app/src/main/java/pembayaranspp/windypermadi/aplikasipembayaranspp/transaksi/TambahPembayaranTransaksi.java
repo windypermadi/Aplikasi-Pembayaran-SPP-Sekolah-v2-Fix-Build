@@ -55,7 +55,7 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     ArrayList<HashMap<String, String>> dataTahun = new ArrayList<>();
     ArrayList<HashMap<String, String>> dataBulan = new ArrayList<>();
 
-    String idperiode, idtransaksi;
+    String idperiode, idtransaksi, idspp;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -83,6 +83,14 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
 
         ActionButton();
         LoadData();
+
+        Intent i = getIntent();
+        idspp = i.getStringExtra("idspp");
+        String bulan = i.getStringExtra("bulan");
+        String total = i.getStringExtra("total");
+        idperiode = i.getStringExtra("id_periode");
+        et_bulan.setText(bulan);
+        et_total.setText(total);
     }
 
     private void ActionButton() {
@@ -276,17 +284,18 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     }
 
     private void TambahData() {
-        Log.d("cek", MainSiswa.iduser);
-        Log.d("cek", idperiode);
-        Log.d("cek", metode_pembayaran);
-        Log.d("cek", et_nama_rekening.getText().toString().trim());
-        Log.d("cek", et_bulan.getText().toString().trim());
-        Log.d("cek", et_tanggal_bayar.getText().toString().trim());
-        Log.d("cek", et_total.getText().toString().trim());
+//        Log.d("cek", MainSiswa.iduser);
+//        Log.d("cek", idperiode);
+//        Log.d("cek", metode_pembayaran);
+//        Log.d("cek", et_nama_rekening.getText().toString().trim());
+//        Log.d("cek", et_bulan.getText().toString().trim());
+//        Log.d("cek", et_tanggal_bayar.getText().toString().trim());
+//        Log.d("cek", et_total.getText().toString().trim());
         AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
                 .addQueryParameter("TAG", "tambah")
                 .addQueryParameter("idsiswa", MainSiswa.iduser)
                 .addQueryParameter("idperiode", idperiode)
+                .addQueryParameter("idspp", idspp)
                 .addQueryParameter("metode_pembayaran", metode_pembayaran)
                 .addQueryParameter("nama_rekening_pembayar", et_nama_rekening.getText().toString().trim())
                 .addQueryParameter("tanggal_bayar", et_tanggal_bayar.getText().toString().trim())

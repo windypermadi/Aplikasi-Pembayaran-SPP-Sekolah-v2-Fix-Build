@@ -78,6 +78,15 @@ public class MenuTagihan extends AppCompatActivity {
         ActionButton();
     }
 
+    @Override
+    protected void onResume() {
+        ly11.setVisibility(View.GONE);
+        ly00.setVisibility(View.VISIBLE);
+        TagihanModel.clear();
+        LoadTagihan();
+        super.onResume();
+    }
+
     private void ActionButton() {
         findViewById(R.id.back).setOnClickListener(v -> finish());
         swipe_refresh.setOnRefreshListener(() -> {
