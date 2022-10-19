@@ -29,7 +29,7 @@ public class WebviewActivity extends AppCompatActivity {
         Intent i = getIntent();
         tahun = i.getStringExtra("tahun");
         bulan = i.getStringExtra("bulan");
-        url = "https://demo.windypermadi.com/pembayaranspp/api/download_laporan.php?tahun_ajaran="+tahun+"&bulan="+bulan;
+        url = "https://demo.windypermadi.com/pembayaranspp/api/laporan_view.php?tahun_ajaran="+tahun+"&bulan="+bulan;
 
         webView = (WebView) findViewById(R.id.webView);
         progressBar=(ProgressBar) findViewById(R.id.progressBar2);
@@ -52,42 +52,42 @@ public class WebviewActivity extends AppCompatActivity {
     public class MyAppWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if(Uri.parse(url).getHost().endsWith("saptaji.com")) {
+            if(Uri.parse(url).getHost().endsWith("windypermadi.com")) {
                 return false;
             }
-
+            progressBar.setVisibility(View.GONE);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             view.getContext().startActivity(intent);
             return true;
         }
     }
 
-//    public class myWebclient extends WebViewClient {
-//        @Override
-//        public void onPageFinished(WebView view, String url) {
-//            super.onPageFinished(view, url);
-//            progressBar.setVisibility(View.GONE);
-//        }
-//
-//        @Override
-//        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-//            super.onPageStarted(view, url, favicon);
-//        }
-//
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//            view.loadUrl(url);
-//            return super.shouldOverrideUrlLoading(view, url);
-//        }
-//    }
-//
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if((keyCode==KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
-//            webView.goBack();
-//            return true;
-//        }
-//
-//        return super.onKeyDown(keyCode, event);
-//    }
+    public class myWebclient extends WebViewClient {
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            progressBar.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return super.shouldOverrideUrlLoading(view, url);
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if((keyCode==KeyEvent.KEYCODE_BACK) && webView.canGoBack()){
+            webView.goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 }
