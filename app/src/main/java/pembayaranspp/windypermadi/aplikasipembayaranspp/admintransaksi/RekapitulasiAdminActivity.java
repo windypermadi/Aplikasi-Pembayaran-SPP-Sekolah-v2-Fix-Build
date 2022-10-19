@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.Connection;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CekKoneksi;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CustomDialog;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CustomProgressbar;
+import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TambahPembayaranTransaksiInvoice;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,7 +74,11 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.text_tutup).setOnClickListener(view -> {
-            finish();
+            Intent x = new Intent(RekapitulasiAdminActivity.this, WebviewActivity.class);
+            x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            x.putExtra("tahun", et_tahun.getText().toString().trim());
+            x.putExtra("bulan", et_bulan.getText().toString().trim());
+            startActivity(x);
         });
         findViewById(R.id.text_simpan).setOnClickListener(v -> {
             if(koneksi.isConnected(RekapitulasiAdminActivity.this)){

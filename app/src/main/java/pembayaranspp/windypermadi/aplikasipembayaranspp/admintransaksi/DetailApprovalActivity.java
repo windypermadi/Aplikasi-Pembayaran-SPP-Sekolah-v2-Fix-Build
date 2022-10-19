@@ -23,6 +23,7 @@ import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.Connection;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CekKoneksi;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CustomDialog;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CustomProgressbar;
+import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.ZoomImageActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -69,6 +70,12 @@ public class DetailApprovalActivity extends AppCompatActivity {
         });
         text_tolak.setOnClickListener(v -> {
             successDialog(DetailApprovalActivity.this, "Bukti transaksi ini telah ditolak! Segera hubungi murid ini untuk mendapatkan bantuan!");
+        });
+        img_upload.setOnClickListener(v -> {
+            Intent x = new Intent(DetailApprovalActivity.this, ZoomImageActivity.class);
+            x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            x.putExtra("idtransaksi", idtransaksi);
+            startActivity(x);
         });
     }
 

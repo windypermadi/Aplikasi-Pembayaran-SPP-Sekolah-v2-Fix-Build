@@ -3,25 +3,45 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_model_toolbar_back.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/btn_danger.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/btn_green.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/btn_primary.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/circle_btn_green.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/circle_button.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/circle_button_red.xml" value="0.136" />
+        <entry key="app/src/main/res/layout/activity_bio_siswa.xml" value="0.1675925925925926" />
+        <entry key="app/src/main/res/layout/activity_detail_admin.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/activity_detail_approval.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_detail_transaksi.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/activity_informasi.xml" value="0.16805555555555557" />
         <entry key="app/src/main/res/layout/activity_list_periode.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/activity_list_semua_siswa_admin.xml" value="0.1675925925925926" />
         <entry key="app/src/main/res/layout/activity_list_transaksi_pembayaran.xml" value="0.19177929913556133" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1675925925925926" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18795166015625003" />
         <entry key="app/src/main/res/layout/activity_main_admin.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_main_siswa.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_main_super_admin.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_menu_kepala.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_menu_tagihan.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/layout/activity_pdf_viewer.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/activity_profil.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/activity_rekapitulasi_admin.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/activity_rekapitulasi_pembayaran.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1675925925925926" />
         <entry key="app/src/main/res/layout/activity_tambah_pembayaran_transaksi.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_tambah_pembayaran_transaksi_invoice.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/activity_tambah_siswa_new.xml" value="0.1675925925925926" />
         <entry key="app/src/main/res/layout/activity_transaksi_pembayaran.xml" value="0.18854166666666666" />
-        <entry key="app/src/main/res/layout/model_list_sudah_transaksi.xml" value="0.25461832682291663" />
+        <entry key="app/src/main/res/layout/activity_webview.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_zoom_image.xml" value="0.1675925925925926" />
+        <entry key="app/src/main/res/layout/custom_error_dialog.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/custom_progressbar.xml" value="0.16805555555555557" />
+        <entry key="app/src/main/res/layout/model_list_sudah_transaksi.xml" value="0.19744974772135412" />
         <entry key="app/src/main/res/layout/model_list_tagihan.xml" value="0.18795166015625003" />
         <entry key="app/src/main/res/layout/model_list_transaksi.xml" value="0.18854166666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

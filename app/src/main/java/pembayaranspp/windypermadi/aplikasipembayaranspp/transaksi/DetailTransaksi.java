@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.bumptech.glide.Glide;
 import com.dandyakbar.aplikasipembayaranspp.R;
 
+import pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.DetailApprovalActivity;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.Connection;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CekKoneksi;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CustomDialog;
@@ -27,6 +30,8 @@ public class DetailTransaksi extends AppCompatActivity {
     String idtransaksi, metode;
     String nis, nama, nama_kelas, tahun_ajaran, bulan, jumlah_pembayaran;
     TextView text_nis, text_nama, text_kelas, text_tahun, text_bulan, text_total, text_metode;
+    ImageView img_upload;
+    String gambar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,13 @@ public class DetailTransaksi extends AppCompatActivity {
         text_bulan = findViewById(R.id.text_bulan);
         text_total = findViewById(R.id.text_total);
         text_metode = findViewById(R.id.text_metode);
+        img_upload = findViewById(R.id.img_upload);
+        img_upload.setOnClickListener(v -> {
+            Intent x = new Intent(DetailTransaksi.this, ZoomImageActivity.class);
+            x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            x.putExtra("idtransaksi", idtransaksi);
+            startActivity(x);
+        });
 
         LoadData();
     }
@@ -67,7 +79,12 @@ public class DetailTransaksi extends AppCompatActivity {
                         bulan = response.optString("bulan");
                         jumlah_pembayaran = response.optString("jumlah_pembayaran");
                         metode = response.optString("metode_pembayaran");
+                        gambar = response.optString("file_pembayaran");
 
+                        Glide.with(getApplicationContext())
+                                .load(gambar)
+                                .error(R.drawable.logo)
+                                .into(img_upload);
                         text_nis.setText(nis);
                         text_nama.setText(nama);
                         text_kelas.setText(nama_kelas);

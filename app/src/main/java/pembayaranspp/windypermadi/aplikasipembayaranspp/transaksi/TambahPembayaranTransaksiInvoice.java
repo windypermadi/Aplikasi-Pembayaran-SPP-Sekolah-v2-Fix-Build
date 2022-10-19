@@ -1,5 +1,6 @@
 package pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,10 +10,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -28,6 +31,14 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.dandyakbar.aplikasipembayaranspp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.Connection;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CekKoneksi;
@@ -41,6 +52,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.UUID;
 
 public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
@@ -59,6 +71,16 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
     public final int REQUEST_CAMERA = 0;
     public final int SELECT_FILE = 1;
     private static final int PERMISSION_REQUEST_CODE = 100;
+
+    private Uri mImageUri;
+
+    //Firebase
+    FirebaseStorage storage;
+    StorageReference storageReference;
+
+    //Kode permintaan untuk memilih metode pengambilan gamabr
+    private static final int REQUEST_CODE_CAMERA = 1;
+    private static final int REQUEST_CODE_GALLERY = 2;
 
     public TambahPembayaranTransaksiInvoice() {
     }
@@ -82,6 +104,9 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
         text_total = findViewById(R.id.text_total);
         img_upload = findViewById(R.id.img_upload);
         btn_upload = findViewById(R.id.btn_upload);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         btn_upload.setOnClickListener(view -> {
             if (checkPermission()) {
@@ -256,6 +281,7 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
                         }
                     });
         } else {
+            firebaseUploadImage();
             AndroidNetworking.upload(Connection.CONNECT + "spp_transaksi.php")
                     .addMultipartParameter("TAG", "tambahBuktiTransaksi")
                     .addMultipartParameter("idtransaksi", idtransaksi)
@@ -287,6 +313,35 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    private void firebaseUploadImage() {
+        StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+        ref.putFile(FilePath)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        customProgress.hideProgress();
+                        Toast.makeText(TambahPembayaranTransaksiInvoice.this, "Uploaded",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        customProgress.hideProgress();
+                        Toast.makeText(TambahPembayaranTransaksiInvoice.this, "Failed " + e.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                .getTotalByteCount());
+                        customProgress.hideProgress();
+                    }
+                });
     }
 
     private void popupBerhasil(String isi) {
@@ -330,4 +385,85 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
             }
         }
     }
+
+    //versi bite
+    //Method ini digunakan untuk mengambil gambar dari Kamera
+//    private void getImage(){
+//        CharSequence[] menu = {"Kamera", "Galeri"};
+//        AlertDialog.Builder dialog = new AlertDialog.Builder(this)
+//                .setTitle("Upload Image")
+//                .setItems(menu, (dialog1, which) -> {
+//                    switch (which){
+//                        case 0:
+//                            //Mengambil gambar dari Kemara ponsel
+//                            Intent imageIntentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                            startActivityForResult(imageIntentCamera, REQUEST_CODE_CAMERA);
+//                            break;
+//
+//                        case 1:
+//                            //Mengambil gambar dari galeri
+//                            Intent imageIntentGallery = new Intent(Intent.ACTION_PICK,
+//                                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                            startActivityForResult(imageIntentGallery, REQUEST_CODE_GALLERY);
+//                            break;
+//                    }
+//                });
+//        dialog.create();
+//        dialog.show();
+//    }
+//
+//    //Method ini digunakan untuk mengupload gambar pada Storage
+//    private void uploadImage(){
+//        //Mendapatkan data dari ImageView sebagai Bytes
+//        img_upload.setDrawingCacheEnabled(true);
+//        img_upload.buildDrawingCache();
+//        Bitmap bitmap = ((BitmapDrawable) img_upload.getDrawable()).getBitmap();
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//
+//        //Mengkompress bitmap menjadi JPG dengan kualitas gambar 100%
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+//        byte[] bytes = stream.toByteArray();
+//
+//        //Lokasi lengkap dimana gambar akan disimpan
+//        String namaFile = UUID.randomUUID()+".jpg";
+//        String pathImage = "gambar/"+namaFile;
+//        UploadTask uploadTask = reference.child(pathImage).putBytes(bytes);
+//        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                        customProgress.hideProgress();
+//                        Toast.makeText(TambahPembayaranTransaksiInvoice.this, "Uploading Berhasil", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        customProgress.hideProgress();
+//                        Toast.makeText(TambahPembayaranTransaksiInvoice.this, "Uploading Gagal", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                        customProgress.showProgress(TambahPembayaranTransaksiInvoice.this, false);
+//                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+////                        progressBar.setProgress((int) progress);
+//                    }
+//                });
+//    }
+//
+//
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.text_simpan:
+//                //Menerapkan kejadian saat tombol upload di klik
+//                uploadImage();
+//                break;
+//            case R.id.btn_upload:
+//                //Menerapkan kejadian saat tombol pilih gambar di klik
+//                getImage();
+//                break;
+//        }
+//    }
 }

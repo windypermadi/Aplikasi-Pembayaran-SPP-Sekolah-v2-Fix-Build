@@ -4,8 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mtsbackground"
+    android:background="@color/backgroundWhite"
     tools:context="pembayaranspp.windypermadi.aplikasipembayaranspp.auth.MainActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-100dp"
+        android:layout_marginBottom="-100dp"
+        android:src="@color/colorGreen" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text"
@@ -17,7 +26,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50dp"
-        android:text="Madrasah Tsanawiyah Negeri 8 Banyuwangi"
+        android:text="Madrasah Ibtidaiah Al-Hudy"
         android:textSize="@dimen/fontsize18"
         android:textStyle="bold" />
 
@@ -27,7 +36,7 @@
         android:layout_height="150dp"
         android:layout_centerInParent="true"
         android:padding="10dp"
-        android:src="@drawable/mts" />
+        android:src="@drawable/logo" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_choose"

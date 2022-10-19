@@ -197,7 +197,7 @@
             android:background="@drawable/btn_primary"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Tutup"
+            android:text="Download Laporan"
             android:textColor="@color/white"
             android:textSize="@dimen/fontsize18"
             tools:ignore="HardcodedText" />

@@ -37,6 +37,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import pembayaranspp.windypermadi.aplikasipembayaranspp.auth.ProfilActivity;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.Connection;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CekKoneksi;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CustomDialog;
@@ -245,8 +246,11 @@ public class AdminActivity extends AppCompatActivity {
             holder.text_nama.setText(akun.getNama());
             holder.text_nis.setText(akun.getUsername());
             holder.text_level.setText("AD");
-            holder.text_hapus.setOnClickListener(v -> {
-                HapusData(akun.getIduser());
+            holder.cv.setOnClickListener(v -> {
+                Intent x = new Intent(mCtx, DetailAdminActivity.class);
+                x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                x.putExtra("iduser", akun.getIdforeign());
+                mCtx.startActivity(x);
             });
         }
 
@@ -271,6 +275,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     private void HapusData(String iduser) {
+        customProgress.showProgress(this, false);
         AndroidNetworking.post(Connection.CONNECT + "spp_admin.php")
                 .addBodyParameter("TAG", "hapus")
                 .addBodyParameter("iduser", iduser)

@@ -17,7 +17,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Madrasah Tsanawiyah 8 Banyuwangi"
+        android:text="Madrasah ibtidaiah Al-Hudy"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -29,7 +29,7 @@
         android:layout_below="@+id/text"
         android:layout_centerInParent="true"
         android:padding="10dp"
-        android:src="@drawable/mts" />
+        android:src="@drawable/logo" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv"
@@ -152,6 +152,7 @@
         android:src="@color/colorGreen" />
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@+id/cv"

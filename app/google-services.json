@@ -1,33 +1,62 @@
 {
   "project_info": {
-    "project_number": "980999307561",
-    "project_id": "aplikasi-pembayaran-sekolah",
-    "storage_bucket": "aplikasi-pembayaran-sekolah.appspot.com"
+    "project_number": "533082424226",
+    "project_id": "aplikasi-pembayaran-spp-fad24",
+    "storage_bucket": "aplikasi-pembayaran-spp-fad24.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980999307561:android:363a42fafab49355bdb738",
+        "mobilesdk_app_id": "1:533082424226:android:72559e9679ddfb8b1128fb",
         "android_client_info": {
-          "package_name": "com.windypermadi.aplikasipembayaransekolah"
+          "package_name": "com.aplikasi.pembayaranspp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "980999307561-jlp8i5skkuhga7u47rp7qmsvubge9qhp.apps.googleusercontent.com",
+          "client_id": "533082424226-95s3olci83i5rc6u8de56g2p3v5ab802.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC58Ti5HLO4_1Yd6irMKjNa5P7mum95P6I"
+          "current_key": "AIzaSyDtN0unzawqQarB6pw4nbv07Go9mmJc30k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "980999307561-jlp8i5skkuhga7u47rp7qmsvubge9qhp.apps.googleusercontent.com",
+              "client_id": "533082424226-95s3olci83i5rc6u8de56g2p3v5ab802.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533082424226:android:ac998dd536be802b1128fb",
+        "android_client_info": {
+          "package_name": "com.windypermadi.aplikasipembayaranspp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533082424226-95s3olci83i5rc6u8de56g2p3v5ab802.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtN0unzawqQarB6pw4nbv07Go9mmJc30k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533082424226-95s3olci83i5rc6u8de56g2p3v5ab802.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

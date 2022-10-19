@@ -24,6 +24,19 @@
         tools:ignore="AllowBackup"
         tools:targetApi="m">
         <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.PdfViewer"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admintransaksi.WebviewActivity"
+            android:exported="false" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.admin.DetailAdminActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.ZoomImageActivity"
+            android:exported="false" />
+        <activity
             android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi_pembayaran.ListTransaksiPembayaran"
             android:exported="false" />
         <activity
@@ -73,7 +86,8 @@
             android:exported="true" />
         <activity
             android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TambahPembayaranTransaksiInvoice"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="MissingClass" />
         <activity
             android:name="pembayaranspp.windypermadi.aplikasipembayaranspp.siswa.ListSemuaSiswaAdmin"
             android:exported="false" />

@@ -120,7 +120,7 @@
             android:textColor="@color/colorGreen"
             android:textSize="@dimen/fontsize13"
             tools:ignore="RtlSymmetry"
-            tools:text="Sudah di approve admin" />
+            android:text="Sudah di approve admin" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

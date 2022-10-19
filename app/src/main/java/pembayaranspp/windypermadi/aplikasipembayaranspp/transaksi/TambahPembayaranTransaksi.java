@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +26,9 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.dandyakbar.aplikasipembayaranspp.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.Connection;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.helper.utils.CekKoneksi;
@@ -59,12 +63,16 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
+//    DatabaseReference dbref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_pembayaran_transaksi);
 
         dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
+//        dbref = FirebaseDatabase.getInstance().getReference().child("transaksi_spp");
 
         listItem = findViewById(R.id.listItem);
         et_nis = findViewById(R.id.et_nis);
@@ -88,9 +96,11 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         idspp = i.getStringExtra("idspp");
         String bulan = i.getStringExtra("bulan");
         String total = i.getStringExtra("total");
+        String tahun_ajaran = i.getStringExtra("tahun_ajaran");
         idperiode = i.getStringExtra("id_periode");
         et_bulan.setText(bulan);
         et_total.setText(total);
+        et_tahun.setText(tahun_ajaran);
     }
 
     private void ActionButton() {
@@ -105,15 +115,15 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
 
             }
         });
-        et_tahun.setOnClickListener(view -> {
-            popup_provinsi();
-        });
+//        et_tahun.setOnClickListener(view -> {
+//            popup_provinsi();
+//        });
         et_tanggal_bayar.setOnClickListener(v -> showDateDialog());
-        et_bulan.setOnClickListener(view -> {
-            popup_bulan();
-        });
+//        et_bulan.setOnClickListener(view -> {
+//            popup_bulan();
+//        });
         text_simpan.setOnClickListener(view -> {
-            if (koneksi.isConnected(this)){
+            if (koneksi.isConnected(this)) {
                 TambahData();
             } else {
                 CustomDialog.noInternet(TambahPembayaranTransaksi.this);
@@ -121,13 +131,13 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         });
     }
 
-    private void showDateDialog(){
+    private void showDateDialog() {
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
             Calendar newDate = Calendar.getInstance();
             newDate.set(year, month, dayOfMonth);
             et_tanggal_bayar.setText(dateFormatter.format(newDate.getTime()));
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
 
@@ -267,7 +277,7 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         final AlertDialog alertDialog = dialogBuilder.create();
         ListView lv_kategori = dialogView.findViewById(R.id.lv_kategori);
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, dataBulan, R.layout.custom_list_jenis,
-                new String[]{"idperiode","bulan", "nominal_spp"},
+                new String[]{"idperiode", "bulan", "nominal_spp"},
                 new int[]{R.id.text_id, R.id.text_nama, R.id.text_spp});
         lv_kategori.setAdapter(simpleAdapter);
         lv_kategori.setOnItemClickListener((parent, view, position, id) -> {
@@ -284,13 +294,6 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     }
 
     private void TambahData() {
-//        Log.d("cek", MainSiswa.iduser);
-//        Log.d("cek", idperiode);
-//        Log.d("cek", metode_pembayaran);
-//        Log.d("cek", et_nama_rekening.getText().toString().trim());
-//        Log.d("cek", et_bulan.getText().toString().trim());
-//        Log.d("cek", et_tanggal_bayar.getText().toString().trim());
-//        Log.d("cek", et_total.getText().toString().trim());
         AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
                 .addQueryParameter("TAG", "tambah")
                 .addQueryParameter("idsiswa", MainSiswa.iduser)
@@ -307,6 +310,7 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         idtransaksi = response.optString("idtransaksi");
+                        addFirebase(idtransaksi);
                         successDialog(TambahPembayaranTransaksi.this, response.optString("pesan"));
                     }
 
@@ -325,6 +329,22 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
                     }
                 });
     }
+
+    private void addFirebase(String idtransaksi) {
+        //instansiasi database firebase
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //Referensi database yang dituju
+        DatabaseReference myRef = database.getReference("transaksi_spp").child(idtransaksi);
+        //memberi nilai pada referensi yang dituju
+        myRef.child("idperiode").setValue(idperiode);
+        myRef.child("idspp").setValue(idspp);
+        myRef.child("metode_pembayaran").setValue(metode_pembayaran);
+        myRef.child("nama_rekening_pembayar").setValue(et_nama_rekening.getText().toString().trim());
+        myRef.child("tanggal_bayar").setValue(et_tanggal_bayar.getText().toString().trim());
+        myRef.child("bulan").setValue(et_bulan.getText().toString().trim());
+        myRef.child("jumlah_pembayaran").setValue(et_total.getText().toString().trim());
+    }
+
 
     public void successDialog(final Context context, final String alertText) {
         final View inflater = LayoutInflater.from(context).inflate(R.layout.custom_success_dialog, null);
