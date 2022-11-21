@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
         <LinearLayout
             android:id="@+id/cv1"
@@ -91,6 +91,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/cv2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -150,6 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:text="Kepala Madrasah"
                 android:textStyle="bold" />
         </LinearLayout>
