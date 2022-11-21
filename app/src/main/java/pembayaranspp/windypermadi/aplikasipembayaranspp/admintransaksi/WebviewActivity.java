@@ -18,7 +18,6 @@ import com.dandyakbar.aplikasipembayaranspp.R;
 
 public class WebviewActivity extends AppCompatActivity {
     WebView webView;
-    ProgressBar progressBar;
     String tahun, bulan, url;
 
     @Override
@@ -32,7 +31,6 @@ public class WebviewActivity extends AppCompatActivity {
         url = "https://demo.windypermadi.com/pembayaranspp/api/laporan_view.php?tahun_ajaran="+tahun+"&bulan="+bulan;
 
         webView = (WebView) findViewById(R.id.webView);
-        progressBar=(ProgressBar) findViewById(R.id.progressBar2);
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -55,7 +53,6 @@ public class WebviewActivity extends AppCompatActivity {
             if(Uri.parse(url).getHost().endsWith("windypermadi.com")) {
                 return false;
             }
-            progressBar.setVisibility(View.GONE);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             view.getContext().startActivity(intent);
             return true;
@@ -66,7 +63,6 @@ public class WebviewActivity extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            progressBar.setVisibility(View.GONE);
         }
 
         @Override
