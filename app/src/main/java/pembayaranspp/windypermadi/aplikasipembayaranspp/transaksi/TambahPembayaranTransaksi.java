@@ -63,16 +63,15 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
+    Calendar myCalendar;
+    DatePickerDialog.OnDateSetListener date;
+
 //    DatabaseReference dbref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_pembayaran_transaksi);
-
-        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-
-//        dbref = FirebaseDatabase.getInstance().getReference().child("transaksi_spp");
 
         listItem = findViewById(R.id.listItem);
         et_nis = findViewById(R.id.et_nis);
@@ -88,6 +87,17 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         et_cari = findViewById(R.id.et_cari);
         findViewById(R.id.back).setOnClickListener(view -> finish());
         et_cari.setText("Pembayaran SPP");
+
+        myCalendar = Calendar.getInstance();
+        date = (view, year, monthOfYear, dayOfMonth) -> {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+            String myFormat = "yyyy-MM-dd";
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            et_tanggal_bayar.setText(sdf.format(myCalendar.getTime()));
+        };
 
         ActionButton();
         LoadData();
@@ -115,13 +125,12 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
 
             }
         });
-//        et_tahun.setOnClickListener(view -> {
-//            popup_provinsi();
-//        });
-        et_tanggal_bayar.setOnClickListener(v -> showDateDialog());
-//        et_bulan.setOnClickListener(view -> {
-//            popup_bulan();
-//        });
+        et_tanggal_bayar.setOnClickListener(v -> {
+            new DatePickerDialog(TambahPembayaranTransaksi.this, date,
+                    myCalendar.get(Calendar.YEAR),
+                    myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        });
         text_simpan.setOnClickListener(view -> {
             if (koneksi.isConnected(this)) {
                 TambahData();

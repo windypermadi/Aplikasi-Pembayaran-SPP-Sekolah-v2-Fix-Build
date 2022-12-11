@@ -39,6 +39,7 @@ import pembayaranspp.windypermadi.aplikasipembayaranspp.menu.MainSiswa;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.model.TransaksiPembayaranModel;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.model.TransaksiRiwayatPembayaranModel;
 import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TambahPembayaranTransaksi;
+import pembayaranspp.windypermadi.aplikasipembayaranspp.transaksi.TambahPembayaranTransaksiInvoice;
 
 public class ListTransaksiPembayaran extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
@@ -145,7 +146,9 @@ public class ListTransaksiPembayaran extends AppCompatActivity {
                                         responses.getString("nominal_spp"),
                                         responses.getString("nominal_spp_format"),
                                         responses.getString("jatuh_tempo"),
-                                        responses.getString("id_periode"));
+                                        responses.getString("id_periode"),
+                                        responses.getString("status_transaksi"),
+                                        responses.getString("no_bayar"));
                                 TransaksiPembayaranModel.add(bk);
                             }
 
@@ -209,18 +212,42 @@ public class ListTransaksiPembayaran extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ProductViewHolder holder, int i) {
             final TransaksiPembayaranModel tagihan = TransaksiPembayaranModel.get(i);
-            holder.text_tanggal.setText(tagihan.getJatuh_tempo());
+            holder.text_tanggal.setText(tagihan.getBulan());
             holder.text_jumlah.setText(tagihan.getNominal_spp());
-            holder.cv.setOnClickListener(v -> {
-                Intent x = new Intent(mCtx, TambahPembayaranTransaksi.class);
-                x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                x.putExtra("idspp", tagihan.getId_spp());
-                x.putExtra("bulan", tagihan.getBulan());
-                x.putExtra("total", tagihan.getNominal_spp());
-                x.putExtra("tahun_ajaran", tagihan.getTahun_ajaran());
-                x.putExtra("id_periode", tagihan.getId_periode());
-                mCtx.startActivity(x);
-            });
+
+                holder.cv.setOnClickListener(v -> {
+                    if (tagihan.getStatus_transaksi().equals("0")){
+                        Intent x = new Intent(mCtx, TambahPembayaranTransaksi.class);
+                        x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        x.putExtra("idspp", tagihan.getId_spp());
+                        x.putExtra("bulan", tagihan.getBulan());
+                        x.putExtra("total", tagihan.getNominal_spp());
+                        x.putExtra("tahun_ajaran", tagihan.getTahun_ajaran());
+                        x.putExtra("id_periode", tagihan.getId_periode());
+                        mCtx.startActivity(x);
+                    } else if (tagihan.getStatus_transaksi().equals("1")){
+                        Intent x = new Intent(mCtx, TambahPembayaranTransaksiInvoice.class);
+                        x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        x.putExtra("idtransaksi", tagihan.getNo_bayar());
+                        mCtx.startActivity(x);
+                    } else if (tagihan.getStatus_transaksi().equals("4")){
+                        Intent x = new Intent(mCtx, TambahPembayaranTransaksiInvoice.class);
+                        x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        x.putExtra("idtransaksi", tagihan.getNo_bayar());
+                        mCtx.startActivity(x);
+                    }
+                });
+
+            if (tagihan.getStatus_transaksi().equals("1")){
+                String status = "Pembayaran Belum Lengkap";
+                holder.text_status.setText(status);
+            } else if (tagihan.getStatus_transaksi().equals("4")){
+                String status = "Pembayaran Ditolak";
+                holder.text_status.setText(status);
+            } else {
+                String status = "Bayar Tagihan";
+                holder.text_status.setText(status);
+            }
         }
 
         @Override
@@ -229,13 +256,14 @@ public class ListTransaksiPembayaran extends AppCompatActivity {
         }
 
         class ProductViewHolder extends RecyclerView.ViewHolder {
-            TextView text_tanggal, text_jumlah;
+            TextView text_tanggal, text_jumlah, text_status;
             CardView cv;
 
             ProductViewHolder(View itemView) {
                 super(itemView);
                 text_jumlah = itemView.findViewById(R.id.text_jumlah);
                 text_tanggal = itemView.findViewById(R.id.text_tanggal);
+                text_status = itemView.findViewById(R.id.text_status);
                 cv = itemView.findViewById(R.id.cv);
             }
         }
@@ -263,7 +291,8 @@ public class ListTransaksiPembayaran extends AppCompatActivity {
                                         responses.getString("bulan"),
                                         responses.getString("nominal_spp"),
                                         responses.getString("nominal_spp_format"),
-                                        responses.getString("tanggal"));
+                                        responses.getString("tanggal"),
+                                        responses.getString("status_transaksi"));
                                 TransaksiRiwayatPembayaranModel.add(bk);
                             }
 
@@ -330,6 +359,13 @@ public class ListTransaksiPembayaran extends AppCompatActivity {
             holder.text_bulan.setText(tagihan.getBulan());
             holder.text_bayar.setText(tagihan.getNominal_spp_format());
             holder.text_tanggal.setText(tagihan.getTanggal());
+            if (tagihan.getStatus_transaksi().equals("2")){
+                String status = "Belum Diterima";
+                holder.text_status.setText(status);
+            } else if (tagihan.getStatus_transaksi().equals("3")){
+                String status = "Sudah Diterima";
+                holder.text_status.setText(status);
+            }
         }
 
         @Override

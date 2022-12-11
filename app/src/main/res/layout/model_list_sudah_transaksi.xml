@@ -117,10 +117,10 @@
             android:gravity="center_vertical"
             android:padding="5dp"
             android:singleLine="true"
+            tools:text="Sudah di approve admin"
             android:textColor="@color/colorGreen"
             android:textSize="@dimen/fontsize13"
-            tools:ignore="RtlSymmetry"
-            android:text="Sudah di approve admin" />
+            tools:ignore="RtlSymmetry" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

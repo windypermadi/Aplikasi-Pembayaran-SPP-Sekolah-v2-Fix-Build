@@ -224,7 +224,7 @@ public class RekapitulasiPembayaranActivity extends AppCompatActivity {
             holder.text_id.setText(kelas.getInvoice());
             holder.text_nama.setText(kelas.getNama());
             holder.text_tanggal.setText(kelas.getBulan() + " | " + kelas.getTahun());
-            if (kelas.getStatus_approve().equals("Y")){
+            if (kelas.getStatus_approve().equals("3")){
                 holder.text_status.setText("Sudah Disetujui");
             } else {
                 holder.text_status.setText("Belum Disetujui");

@@ -69,6 +69,7 @@ public class DetailApprovalActivity extends AppCompatActivity {
             TambahData();
         });
         text_tolak.setOnClickListener(v -> {
+            TolakData();
             successDialog(DetailApprovalActivity.this, "Bukti transaksi ini telah ditolak! Segera hubungi murid ini untuk mendapatkan bantuan!");
         });
         img_upload.setOnClickListener(v -> {
@@ -128,6 +129,36 @@ public class DetailApprovalActivity extends AppCompatActivity {
         customProgress.showProgress(this, false);
         AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
                 .addQueryParameter("TAG", "approve_pembayaran")
+                .addQueryParameter("invoice", idtransaksi)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        customProgress.hideProgress();
+                        successDialog(DetailApprovalActivity.this, response.optString("pesan"));
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        customProgress.hideProgress();
+                        if (error.getErrorCode() == 400) {
+                            try {
+                                JSONObject body = new JSONObject(error.getErrorBody());
+                                CustomDialog.errorDialog(DetailApprovalActivity.this, body.optString("pesan"));
+                            } catch (JSONException ignored) {
+                            }
+                        } else {
+                            CustomDialog.errorDialog(DetailApprovalActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                        }
+                    }
+                });
+    }
+
+    private void TolakData() {
+        customProgress.showProgress(this, false);
+        AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
+                .addQueryParameter("TAG", "tolak_pembayaran")
                 .addQueryParameter("invoice", idtransaksi)
                 .setPriority(Priority.MEDIUM)
                 .build()

@@ -8,8 +8,11 @@ public class TransaksiPembayaranModel {
     String nominal_spp_format;
     String jatuh_tempo;
     String id_periode;
+    String status_transaksi;
+    String no_bayar;
 
-    public TransaksiPembayaranModel(String id_spp, String tahun_ajaran, String bulan, String nominal_spp, String nominal_spp_format, String jatuh_tempo, String id_periode) {
+    public TransaksiPembayaranModel(String id_spp, String tahun_ajaran, String bulan,
+                                    String nominal_spp, String nominal_spp_format, String jatuh_tempo, String id_periode, String status_transaksi, String no_bayar) {
         this.id_spp = id_spp;
         this.tahun_ajaran = tahun_ajaran;
         this.bulan = bulan;
@@ -17,6 +20,8 @@ public class TransaksiPembayaranModel {
         this.nominal_spp_format = nominal_spp_format;
         this.jatuh_tempo = jatuh_tempo;
         this.id_periode = id_periode;
+        this.status_transaksi = status_transaksi;
+        this.no_bayar = no_bayar;
     }
 
     public String getId_spp() {
@@ -45,5 +50,13 @@ public class TransaksiPembayaranModel {
 
     public String getId_periode() {
         return id_periode;
+    }
+
+    public String getStatus_transaksi() {
+        return status_transaksi;
+    }
+
+    public String getNo_bayar() {
+        return no_bayar;
     }
 }

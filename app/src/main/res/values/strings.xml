@@ -9,11 +9,11 @@
 
     <string-array name="metode_pembayaran">
         <item>Transfer Bank</item>
-        <item>Bank Virtual Account</item>
-        <item>OVO</item>
-        <item>Dana</item>
-        <item>Gopay</item>
-        <item>Shopeepay</item>
+<!--        <item>Bank Virtual Account</item>-->
+<!--        <item>OVO</item>-->
+<!--        <item>Dana</item>-->
+<!--        <item>Gopay</item>-->
+<!--        <item>Shopeepay</item>-->
     </string-array>
 
 </resources>

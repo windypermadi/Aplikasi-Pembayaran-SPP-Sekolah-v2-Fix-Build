@@ -227,7 +227,7 @@ public class ApprovalActivity extends AppCompatActivity {
             holder.text_tanggal.setText(kelas.getBulan() + " | " + kelas.getTahun());
             holder.text_status.setText(kelas.getTgl_create());
             holder.cv.setOnClickListener(v -> {
-                if (kelas.getStatus_approve().equals("N")){
+                if (kelas.getStatus_approve().equals("2")){
                     Intent x = new Intent(mCtx, DetailApprovalActivity.class);
                     x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     x.putExtra("idtransaksi", kelas.getIdtransaksi());
