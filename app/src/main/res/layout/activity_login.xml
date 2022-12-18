@@ -70,7 +70,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="bottom|start"
-                android:text="ID ANGGOTA"
+                android:text="ID LOGIN"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="12sp"

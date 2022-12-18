@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
 //        }
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        Intent i = getIntent();
-        status_login = i.getStringExtra("status_login");
+//        Intent i = getIntent();
+//        status_login = i.getStringExtra("status_login");
 
         inputUsername = findViewById(R.id.inputUsername);
         inputkatasandi = findViewById(R.id.inputkatasandi);

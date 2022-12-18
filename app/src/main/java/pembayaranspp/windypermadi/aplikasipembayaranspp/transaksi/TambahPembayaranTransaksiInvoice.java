@@ -110,7 +110,12 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
 
         btn_upload.setOnClickListener(view -> {
             if (checkPermission()) {
-                selectImage();
+//                selectImage();
+                gambar = "isi";
+                intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Pilih gambar"), SELECT_FILE);
             } else {
                 requestPermission();
             }
@@ -172,11 +177,48 @@ public class TambahPembayaranTransaksiInvoice extends AppCompatActivity {
                 });
     }
 
+    private void showDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Ambil gambar dari galeri");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Ambil Gambar Dari Galeri")
+                .setIcon(R.mipmap.ic_launcher)
+                .setCancelable(false)
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        gambar = "isi";
+                        intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent, "Pilih gambar"), SELECT_FILE);
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
+    }
+
     private void selectImage() {
         img_upload.setImageResource(0);
         final CharSequence[] items = {"Ambil foto", "Pilih dari galeri",
                 "Batal"};
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(TambahPembayaranTransaksiInvoice.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(TambahPembayaranTransaksiInvoice.this);
         builder.setTitle("Upload bukti transaksi");
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setItems(items, (dialog, item) -> {
