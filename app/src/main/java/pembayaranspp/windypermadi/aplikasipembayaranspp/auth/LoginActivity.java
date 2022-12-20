@@ -42,11 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         SessionManager = new SessionManager(getApplicationContext());
-//        if (SessionManager.isLoggedIn()) {
-//            Intent intent = new Intent(LoginActivity.this, MainAdmin.class);
-//            startActivity(intent);
-//            finish();
-//        }
+        if (SessionManager.isLoggedIn()) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
 //        Intent i = getIntent();
@@ -68,13 +68,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!username.isEmpty() && !pass_login.isEmpty()) {
 
-                    if (status_login.equals("1")){
-                        LoginProses(username, pass_login);
-                    } else if (status_login.equals("3")){
-                        LoginProsesSiswa(username, pass_login);
-                    } else {
-                        LoginProsesKepala(username, pass_login);
-                    }
+                    LoginProses(username, pass_login);
+//                    if (status_login.equals("1")){
+//                        LoginProses(username, pass_login);
+//                    } else if (status_login.equals("3")){
+//                        LoginProsesSiswa(username, pass_login);
+//                    } else {
+//                        LoginProsesKepala(username, pass_login);
+//                    }
 
                 } else {
                     CustomDialog.errorDialog(LoginActivity.this, "Data tidak boleh ada yang kosong.");
@@ -87,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginProses(final String username, final String pass_login) {
         customProgress.showProgress(this, false);
-        AndroidNetworking.get(Connection.CONNECT + "spp_login_admin.php")
+        AndroidNetworking.get(Connection.CONNECT + "spp_login.php")
                 .addQueryParameter("username", username)
                 .addQueryParameter("password", pass_login)
                 .setPriority(Priority.MEDIUM)
@@ -98,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                         clearApplicationData();
                         SessionManager.createLoginSession(
                                 response.optString("idforeign"),
-                                response.optString("nama_admin"),
+                                response.optString("nama"),
                                 response.optString("status_user"));
 
                         if (response.optString("status_user").equals("0")){
@@ -106,8 +107,18 @@ public class LoginActivity extends AppCompatActivity {
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             finish();
-                        } else {
+                        } else if (response.optString("status_user").equals("1")){
                             Intent intent = new Intent(LoginActivity.this, MainAdmin.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        } else if (response.optString("status_user").equals("2")){
+                            Intent intent = new Intent(LoginActivity.this, MenuKepala.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Intent intent = new Intent(LoginActivity.this, MainSiswa.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             finish();

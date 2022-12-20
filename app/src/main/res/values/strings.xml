@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aplikasi Pembayaran Sekolah</string>
+    <string name="app_name">SPP Al-Hudy</string>
 
     <string-array name="jenis_kelamin">
         <item>Laki-laki</item>
